@@ -29,7 +29,7 @@ jobs:
       - name: Extract libjabra.so from install.sh
         run: |
           mkdir -p lib
-          sed -n 's/^libjabraSo="//;s/"$//p' install.sh | xxd -r -p > lib/libjabra.so
+          awk '/^libjabraSo=/{gsub(/^libjabraSo="/,""); gsub(/"$/,""); print}' install.sh | xxd -r -p > lib/libjabra.so
           chmod 644 lib/libjabra.so
           # Link system libcurl into lib/ for CGo build (required by PR #27 LDFLAGS)
           ln -sf /usr/lib/x86_64-linux-gnu/libcurl.so.4 lib/libcurl.so.4

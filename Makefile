@@ -21,7 +21,7 @@ extract-lib: ## Extract libjabra.so from install.sh
 	@mkdir -p $(LIB_DIR)
 	@if [ ! -f $(LIB_DIR)/libjabra.so ]; then \
 		echo "Extracting libjabra.so from install.sh..."; \
-		sed -n 's/^libjabraSo="//;s/"$$//p' install.sh | xxd -r -p > $(LIB_DIR)/libjabra.so; \
+		awk '/^libjabraSo=/{gsub(/^libjabraSo="/,""); gsub(/"$$/,""); print}' install.sh | xxd -r -p > $(LIB_DIR)/libjabra.so; \
 		chmod 644 $(LIB_DIR)/libjabra.so; \
 		echo "Done."; \
 	else \
