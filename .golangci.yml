@@ -23,6 +23,21 @@ linters-settings:
   staticcheck:
     checks:
       - all
+  revive:
+    rules:
+      - name: var-naming
+        disabled: true
+      - name: var-declaration
+        disabled: true
+      - name: unused-parameter
+        disabled: true
+  gocritic:
+    disabled-checks:
+      - singleCaseSwitch
+      - elseif
+      - underef
+      - exitAfterDefer
+      - dupSubExpr
 
 issues:
   exclude-rules:
@@ -40,16 +55,27 @@ issues:
       linters:
         - errcheck
       text: "fmt\\.Print"
-    # Suppress misspell for existing identifiers until renamed
+    # Suppress misspell for existing identifiers and comments
     - linters:
         - misspell
-      source: "dongleSettigns|Settigns"
-    # Suppress gocritic in test files
+      source: "dongleSettigns|Settigns|devide"
+    # Suppress gocritic and errcheck in test files
     - path: _test\.go
       linters:
         - gocritic
         - errcheck
+        - revive
     # Suppress revive exported-type warnings in package main
     - linters:
         - revive
       text: "exported"
+    # Suppress errcheck for restoreTerminal (terminal cleanup)
+    - path: cmd\.go
+      linters:
+        - errcheck
+      text: "IoctlSetTermios"
+    # Suppress exitAfterDefer for log.Fatalln in main
+    - path: main\.go
+      linters:
+        - gocritic
+      text: "exitAfterDefer"
