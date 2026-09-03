@@ -112,7 +112,7 @@ func TestCheckErrorStatus(t *testing.T) {
 		{"code 5 ErrParseError", 5, ErrParseError, false},
 		{"code 6 ErrOtherError", 6, ErrOtherError, false},
 		{"code 7 ErrDeviceInfoError", 7, ErrDeviceInfoError, false},
-		{"code 8 ErrFileNotAccessibleStatus", 8, ErrFileNotAccessibleStatus, false},
+		{"code 8 ErrFileNotAccessible", 8, ErrFileNotAccessible, false},
 		{"code 9 ErrFileNotCompatible", 9, ErrFileNotCompatible, false},
 		{"code 10 ErrDeviceNotFound", 10, ErrDeviceNotFound, false},
 		{"code 11 ErrParameterFail", 11, ErrParameterFail, false},
