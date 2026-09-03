@@ -114,12 +114,14 @@ jobs:
           mkdir -p lib
           awk '/^libjabraSo=/{gsub(/^libjabraSo="/,""); gsub(/"$/,""); print}' install.sh | xxd -r -p > lib/libjabra.so
           chmod 644 lib/libjabra.so
+          ln -sf libjabra.so lib/libjabra.so.1
           ln -sf /usr/lib/x86_64-linux-gnu/libcurl.so.4 lib/libcurl.so.4
 
       - name: Run tests with race detector and coverage
         run: go test -v -race -coverprofile=coverage.out -covermode=atomic ./...
         env:
           CGO_ENABLED: 1
+          LD_LIBRARY_PATH: ${{ github.workspace }}/lib
 
       - name: Display coverage summary
         if: always()
