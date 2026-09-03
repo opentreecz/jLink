@@ -163,9 +163,9 @@ func TestCheckErrorStatus(t *testing.T) {
 
 func TestReturnCodeError_Error(t *testing.T) {
 	tests := []struct {
-		name    string
-		err     *ReturnCodeError
-		want    string
+		name string
+		err  *ReturnCodeError
+		want string
 	}{
 		{
 			"sentinel error format",

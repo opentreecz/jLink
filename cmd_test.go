@@ -137,11 +137,11 @@ func TestHsBuildDisplay(t *testing.T) {
 			items: []settingInfo{
 				{groupName: "Audio", cntrlType: cntrlComboBox, name: "Sidetone"},
 				{groupName: "Audio", cntrlType: cntrlToggle, name: "MuteReminder"},
-				{groupName: "Audio", cntrlType: cntrlLabel, name: "FirmwareLabel"},   // should be skipped
+				{groupName: "Audio", cntrlType: cntrlLabel, name: "FirmwareLabel"}, // should be skipped
 				{groupName: "General", cntrlType: cntrlDrpDown, name: "ActiveNoise"},
-				{groupName: "General", cntrlType: cntrlHorzRuler, name: "Ruler"},     // should be skipped
-				{groupName: "General", cntrlType: cntrlButton, name: "ResetButton"},  // should be skipped
-				{groupName: "General", cntrlType: cntrlEditButton, name: "EditBtn"},  // should be skipped
+				{groupName: "General", cntrlType: cntrlHorzRuler, name: "Ruler"},    // should be skipped
+				{groupName: "General", cntrlType: cntrlButton, name: "ResetButton"}, // should be skipped
+				{groupName: "General", cntrlType: cntrlEditButton, name: "EditBtn"}, // should be skipped
 				{groupName: "General", cntrlType: cntrlRadio, name: "ANCLevel"},
 			},
 		}
